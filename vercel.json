@@ -1,7 +1,1 @@
-{
-  "functions": {
-    "api/index.py": {
-      "includeFiles": "q-vercel-latency.json"
-    }
-  }
-}
+{}

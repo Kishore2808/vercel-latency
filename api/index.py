@@ -16,7 +16,7 @@ app.add_middleware(
 )
 
 # Load telemetry data
-TELEMETRY_PATH = Path(__file__).resolve().parents[1] / "q-vercel-latency.json"
+TELEMETRY_PATH = Path(__file__).resolve().parent / "_telemetry.json"
 with TELEMETRY_PATH.open() as f:
     telemetry = json.load(f)
 
