@@ -14,7 +14,7 @@ async def add_cors_headers(request: Request, call_next):
     response = await call_next(request)
     response.headers.setdefault("Access-Control-Allow-Origin", "*")
     response.headers.setdefault("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-    response.headers.setdefault("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    response.headers.setdefault("Access-Control-Allow-Headers", "*")
     response.headers.setdefault("Access-Control-Expose-Headers", "Access-Control-Allow-Origin")
     return response
 
