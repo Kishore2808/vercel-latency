@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from pathlib import Path
 import json
 import numpy as np
 
@@ -15,7 +16,8 @@ app.add_middleware(
 )
 
 # Load telemetry data
-with open("q-vercel-latency.json") as f:
+TELEMETRY_PATH = Path(__file__).resolve().parents[1] / "q-vercel-latency.json"
+with TELEMETRY_PATH.open() as f:
     telemetry = json.load(f)
 
 class RequestData(BaseModel):
@@ -30,7 +32,7 @@ def analyze(data: RequestData):
         records = [r for r in telemetry if r["region"] == region]
 
         latencies = [r["latency_ms"] for r in records]
-        uptimes = [r["uptime"] for r in records]
+        uptimes = [r["uptime_pct"] for r in records]
 
         if not records:
             continue
