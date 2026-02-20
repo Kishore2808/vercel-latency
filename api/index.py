@@ -67,4 +67,4 @@ def analyze(data: RequestData):
             "breaches": sum(1 for l in latencies if l > data.threshold_ms)
         }
 
-    return result
+    return {"regions": result}
